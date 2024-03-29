@@ -1,5 +1,6 @@
 const tableBody = document.getElementById("table-body");
 let count = 0;
+let users = [];
 
 const getUsers = async () => {
     try {
@@ -8,10 +9,7 @@ const getUsers = async () => {
         
         console.log(data);
 
-        //return data.data;
-        /*data.forEach(user => {
-            showResults(user.name, user.username, user.email, user.company.name, user.phone)
-        });*/ 
+        return data.data;
 
     } catch (error) {
         console.log("Errore di caricamento dei dati");
@@ -19,7 +17,6 @@ const getUsers = async () => {
 }
 
 getUsers()
-
 
 function showResults(name, username, email, company, phoneNumber) {
 
@@ -42,16 +39,17 @@ function showResults(name, username, email, company, phoneNumber) {
    tableBody.append(tr)
 }
 
-function searchUser(users) {
+async function searchUser() {
+    
+    //1. l'utente riempie gli input -> prendiamo i valori degli input
 
     const filterQuery = document.querySelector("#search-filter").value.toLowerCase();
-    const inputValue = document.querySelector("#input-value").value.toLowerCase();;
+    const inputValue = document.querySelector("#input-value").value.toLowerCase();
 
-    //se data.filterQuery includes (inputValue) => showResults(user.name, user.username, user.email, user.company.name, user.phone)
-    console.log(filterQuery, inputValue);
+    //2. filtriamo l'array di utenti con i due parametri inseriti
+    //3. per ogni risultato lanciamo la funzione showResult    
 };
 
 searchUser()
-    
 
 
